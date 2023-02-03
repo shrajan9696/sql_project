@@ -1,0 +1,10 @@
+/* *{
+    background-color: blue;
+} */
+
+th, td {
+    border-style:dotted;
+    border-color: #96D4D4;
+    /* border-color: black; */
+    margin: 5px;
+  }

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/styles.css">
+
+</head>
+<form action="/" method="get">
+    <input type="submit" value="HOME">
+</form>
+<body>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Roll no</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Branch</th>
+                    <th>Year</th>
+                    <th>Email-id</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%for(let i=0; i < res.length; i++) {%>
+                    <% let obj=res[i];%>
+                        <tr>
+                            <td>
+                                <%=obj.Roll_no%>
+                            </td>
+                            <td>
+                                <%=obj.First_name%>
+                            </td>
+                            <td>
+                                <%=obj.Last_name%>
+                            </td>
+                            <td>
+                                <%=obj.Branch%>
+                            </td>
+                            <td>
+                                <%=obj.Year%>
+                            </td>
+                            <td>
+                                <%=obj.email%>
+                            </td>
+                            <!-- <td><input type="submit" value="<%=obj.Roll_no%>" name = "delete" method="post" action="/delete">DELETE</td> -->
+                            <td>
+                                <form action="/delete" method="post">
+                                    <button type="submit" name="roll_no" value="<%=obj.Roll_no%>">DELETE</button>
+                                </form>
+                            </td>
+                            <!-- <td><button id="update"   onclick="update_content('<%= obj.Roll_no %>')" value="<%=obj.Roll_no%>" >UPDATE</button></td> -->
+                        </tr>
+
+                        <%}%>
+
+
+            </tbody>
+            <tfoot>
+                <td><button id="insert">Insert</button></td>
+            </tfoot>
+
+
+        </table>
+
+        <div style="display: none; " id="take_input">
+            <form action="/insert" method="post" id="content_submit">
+                <label for="Roll no">Roll No.</label>
+                <input type="text" name="roll_no">
+                <label for="First Name">First Name</label>
+                <input type="text" name="first">
+                <label for="Last Name">Last Name</label>
+                <input type="text" name="last">
+                <label for="Year">Year</label>
+                <select  id="Year" name="year">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+
+                <label for="Branch">Branch</label>
+
+                <select id="branch" name="branch">
+                    <option value="CSE">CSE</option>
+                    <option value="EE">EE</option>
+                    <option value="EL">EL</option>
+                    <option value="ME">ME</option>
+                </select>
+                <label for="email"><email/label>
+                <input type="email" name="email" id="">
+                <button type="submit" name="content" onclick="myfunction()" >SUBMIT</button>
+                <button type="button" name="discard" onclick="Discard()" id="discard" >DISCARD</button>
+
+            </form>
+        </div>
+
+        <div>
+            <form action="/sql_query" method="post">
+            <label for="sql_query">SQL QUERY</label>
+            <input type="text" name="sql_query" id="" required style="    width: -webkit-fill-available;" placeholder="SELECT * FROM students WHERE Branch = 'CSE';">
+            <input type="submit" value="submit">
+        </form>
+        </div>
+    </div>
+    <script src="/javascript/index.js"></script>
+</body>
+
+</html>
